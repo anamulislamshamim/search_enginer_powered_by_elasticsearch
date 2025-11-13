@@ -6,6 +6,21 @@ from fastapi.middleware.cors import CORSMiddleware
 from sentence_transformers import SentenceTransformer
 import torch 
 
+# import os
+# from openai import OpenAI
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+# API_KEY = os.getenv("OPENAI_API_KEY","")
+# assert API_KEY, "ERROR: OpenAI Key is missing"
+
+# client = OpenAI(
+#     api_key=API_KEY
+#     )
+
+# open_ai_model = 'text-embedding-ada-002'
+
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = SentenceTransformer("all-MiniLM-L6-v2").to(device)
@@ -25,6 +40,8 @@ app.add_middleware(
 async def semantic_search(search_query: str, skip: int = 0, limit: int = 10, year: str | None = None) -> dict:
     es = get_es_client(max_retries=1, sleep_time=0)
     embedded_query = model.encode(search_query)
+    # embedding with open ai model
+    # embedded_query = client.embeddings.create(input=search_query, model=open_ai_model).data[0].embedding
     query = {
         "bool": {
             "must": [

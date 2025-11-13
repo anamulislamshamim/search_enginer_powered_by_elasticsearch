@@ -9,6 +9,21 @@ from pprint import pprint
 from sentence_transformers import SentenceTransformer
 import time
 
+# import os
+# from openai import OpenAI
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+# API_KEY = os.getenv("OPENAI_API_KEY","")
+# assert API_KEY, "ERROR: OpenAI Key is missing"
+
+# client = OpenAI(
+#     api_key=API_KEY
+#     )
+
+# open_ai_model = 'text-embedding-ada-002'
+
 
 def index_data(documents: List[dict], model: SentenceTransformer):
     es = get_es_client(max_retries=1, sleep_time=0)
@@ -45,6 +60,8 @@ def _insert_documents(es: Elasticsearch, documents: List[dict], model: SentenceT
         operations.append({
             **document,
             "embedding": model.encode(document["explanation"])
+            # embedding with open_ai_model
+            # embedding: client.embeddings.create(input=document["explanation"], model=open_ai_model).data[0].embedding
         })
     
     MAX_RETRIES = 3
