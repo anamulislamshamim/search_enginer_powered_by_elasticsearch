@@ -1,4 +1,5 @@
-![Video Explanation](https://youtu.be/2gNPNrZhOTc?si=BPjIYbXG-qvvMDku)
+[![Watch the video](https://img.youtube.com/vi/2gNPNrZhOTc/0.jpg)](https://www.youtube.com/watch?v=2gNPNrZhOTc)
+
 # 🧠 AI-Powered Search Engine with Elasticsearch
 
 This project is a **multi-search engine** powered by **Elasticsearch** that combines traditional keyword-based search with **AI-powered semantic search**.
