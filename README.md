@@ -35,7 +35,7 @@ It demonstrates how to build intelligent and scalable search capabilities for mo
 | **Search Engine**   | Elasticsearch 8.x                    |
 | **Language**        | Python 3.x                           |
 | **Embedding Model** | Hugging Face SentenceTransformer     |
-| **API Framework**   | FastAPI / Flask (depending on setup) |
+| **API Framework**   | FastAPI                              |
 | **Client**          | Elasticsearch Python Client          |
 
 ---
